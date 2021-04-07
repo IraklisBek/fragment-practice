@@ -1,0 +1,110 @@
+$primary: var(--main-color);
+$secondary: var(--main-color);
+$white: var(--my-black);
+$gray: #9b9b9b;
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: calc(100% - 40px);
+}
+
+.form__label {
+    padding-left: 20px;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid $gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: $white;
+    padding: 7px 20px;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    &:placeholder-shown ~ .form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $gray;
+}
+
+.form__field:focus {
+    ~ .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: $primary;
+        font-weight: 700;
+    }
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, $primary, $secondary);
+    border-image-slice: 1;
+}
+/* reset input */
+.form__field {
+    &:required,
+    &:invalid {
+        box-shadow: none;
+    }
+}
+
+.editor-tag {
+    cursor: text;
+    font-size: 16px;
+    background: white;
+
+    & .tag-item {
+        line-height: 20px;
+        border-radius: 14px;
+        height: 20px;
+        padding: 11px;
+        font-size: 14px;
+        display: inline-block;
+        background: var(--main-color);
+        color: white;
+        font-size: 18px;
+        margin-top: 6px;
+        .remove-tag {
+            padding-right: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    }
+
+    & .tag-item:not(:first-child) {
+        margin-left: 5px;
+    }
+}
+
+.search-btn {
+    width: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
+    bottom: 70px;
+}
+
+.pink-btn{
+    border-radius: 22px;
+}

@@ -1,0 +1,78 @@
+.header {
+    box-shadow: var(--box-shadow-1);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: white;
+    width: calc(100% - 20px); // -20px cause of padding
+}
+
+.header-img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: flex;
+}
+
+.search-img{
+    width:20px;
+    height:20px;
+}
+
+.sb-example-2 {
+    padding: 0 10px;
+    width: 100%;
+}
+
+.sb-example-2 input {
+    color: var(--my-black);
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+.sb-example-2 #cover {
+    padding: 3px;
+    margin: 0 auto;
+    background-color: var(--search-grey-bg);
+    border-radius: 4px;
+}
+
+.sb-example-2 input[type="text"] {
+    height: 32px;
+    font-size: 14px;
+    line-height: 1;
+    padding-left:40px;
+    width: calc(100% - 40px); // cause of padding-left
+}
+
+.sb-example-2 input[type="text"]::-webkit-input-placeholder {
+    color: var(--my-black);
+}
+
+.sb-example-2 input[type="text"]:-ms-input-placeholder {
+    color: var(--my-black);
+}
+
+.sb-example-2 input[type="text"]::-ms-input-placeholder {
+    color: var(--my-black);
+}
+
+.sb-example-2 input[type="text"]::placeholder {
+    color: var(--my-black);
+}
+
+button {
+    color: #fff;
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}

@@ -1,0 +1,13 @@
+{
+  "appId": "com.klesqaure.fragment",
+  "appName": "fragment2",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/fragment-mobile",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

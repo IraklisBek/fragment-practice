@@ -1,0 +1,225 @@
+.general {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.general {
+  border-bottom: 1px solid var(--my-grey);
+}
+
+.comments {
+  display: none;
+  border-top: 1px solid var(--my-grey);
+  .load-more-comments {
+    margin-left: 65px;
+    color: var(--main-color);
+    font-weight: bold;
+    padding: 10px 0;
+  }
+  .content {
+    padding: 10px 20px;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: space-between;
+
+    .photo {
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+    .text {
+      background-color: var(--my-grey);
+      border-top-right-radius: 12px;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      color: var(--my-black);
+      margin-left: 15px;
+      width: calc(100% - 65px); //-65 profile-img width + padding + margin
+      padding: 10px;
+    }
+    .like-reply {
+      display: flex;
+      align-items: center;
+      margin-left: 50px; // 65 profile-img width + padding
+      margin-top: 5px;
+    }
+  }
+
+  .user-img {
+    color: #fff;
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+  }
+  .under-comment-input {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+}
+
+.like,
+.like-item {
+  display: flex;
+  justify-content: space-evenly;
+
+  align-items: center;
+  background-color: white;
+  font-size: 14px;
+}
+
+.like-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.like {
+  padding: 10px 0px;
+}
+
+.like-item img {
+  width: 20px;
+}
+
+.like-item div {
+  margin-top: 5px;
+}
+
+.post-counts {
+  display: flex;
+  padding: 20px 0px 20px 10px;
+  align-items: center;
+  .text {
+    margin-left: 10px;
+    color: var(--my-dark-grey);
+  }
+}
+
+.post-likes-img {
+  width: 18px;
+  // border-radius: 50%;
+}
+
+.search-img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.sb-example-2 {
+  width: 100%;
+}
+
+.sb-example-2 input {
+  color: var(--my-black);
+  font-family: Nunito;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.sb-example-2 #cover {
+  padding: 3px;
+  margin: 0 auto;
+  background-color: var(--search-grey-bg);
+  border-radius: 4px;
+}
+
+.sb-example-2 input[type="text"] {
+  height: 32px;
+  font-size: 14px;
+  line-height: 1;
+  padding-left: 40px;
+  width: calc(100% - 40px); // cause of padding-left
+}
+
+.sb-example-2 input[type="text"]::-webkit-input-placeholder {
+  color: var(--my-black);
+}
+
+.sb-example-2 input[type="text"]:-ms-input-placeholder {
+  color: var(--my-black);
+}
+
+.sb-example-2 input[type="text"]::-ms-input-placeholder {
+  color: var(--my-black);
+}
+
+.sb-example-2 input[type="text"]::placeholder {
+  color: var(--my-black);
+}
+
+.support-modal {
+  max-height: 0;
+  opacity: 0;
+  .support-title {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+  }
+  .support-post-photo {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+  .text {
+    margin-left: 15px;
+  }
+  .name-price {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  .price-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .money-sign {
+      font-size: 30px;
+      padding-left: 10px;
+      position: absolute;
+    }
+    .initial-price {
+      font-size: 20px;
+      margin-left: 15px;
+    }
+    input[type="text"] {
+      height: 50px;
+      font-size: 14px;
+      line-height: 1;
+      padding-left: 40px;
+      width: 50px; // cause of padding-left
+      font-size: 30px;
+    }
+  }
+  .send-msg-input {
+    textarea {
+      padding: 5px;
+      font-size: 14px;
+      line-height: 1;
+      width: calc(100% - 10px); // cause of padding-left
+      font-size: 20px;
+    }
+  }
+  .support-btns {
+    margin-top: 40px;
+  }
+}
+
+.support-btn {
+  // margin: 2.5px;
+}
+
+.bg-light-dark {
+  z-index: 1000000;
+}

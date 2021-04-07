@@ -1,0 +1,165 @@
+<div class="choose-kind">
+  <div class="cm-fs18-bold">Create</div>
+  <div class="choose-kind-item" (click)="openProject()">
+    <img src="../../assets/icons/project.png"> <span class="choose-kind-item-text">Project</span>
+  </div>
+  <div class="choose-kind-item">
+    <img src="../../assets/icons/event.png"> <span class="choose-kind-item-text">Event</span>
+  </div>
+  <div class="choose-kind-item">
+    <img src="../../assets/icons/art-space.png"> <span class="choose-kind-item-text">Art Space</span>
+  </div>
+  <div class="choose-kind-item">
+    <img src="../../assets/icons/community.png"> <span class="choose-kind-item-text">Community</span>
+  </div>
+  <div class="choose-kind-item">
+    <img src="../../assets/icons/hire.png"> <span class="choose-kind-item-text">Hiring Artists</span>
+  </div>
+  <div class="choose-kind-item">
+    <img src="../../assets/icons/sick.png"> <span class="choose-kind-item-text">Open to Work</span>
+  </div>
+</div>
+
+
+<form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading" [@slideInOut]="animationState"
+  style="width:100%; position: absolute; bottom:0; height:100vh; background-color: white;">
+
+  <div class="header">
+    <div (click)="closeProject()" style="outline: 0;">
+      <img src="../../assets/icons/close-pink-2.png" class="header-img">
+    </div>
+    <div class="header-title">
+      Create Project
+    </div>
+    <button class="save-btn" type="submit">Publish</button>
+  </div>
+  <div class="create-content">
+
+
+    <div class="create-content-header">
+      <img src="{{user?.photo}}" class="content-profile-img">
+      <div class="create-content-header-text">
+        <span style="font-weight: bold; color:var(--my-black)">{{user?.username}}</span>
+        <br>
+        <span style="font-size:14px">What is this project about?</span>
+      </div>
+    </div>
+
+
+    <div class="create-content-item">
+      <img src="../../assets/icons/description.png" id="descriptionIcon">
+      <div class="form__group">
+        <textarea rows="1" type="text" class="form__input text-area" id="description" placeholder="Description"
+          formControlName="description" onclick="this.rows = '10';"
+          (input)="inputChanged($event.target, 'descriptionIcon', '../../assets/icons/description-pink.png')"></textarea>
+      </div>
+    </div>
+
+
+
+    <div class="create-content-item">
+      <img src="../../assets/icons/title.png" id="titleIcon">
+      <div class="form__group">
+        <input type="text" class="form__input" id="name" placeholder="Title" autocomplete="off" formControlName="title"
+          (input)="inputChanged($event.target, 'titleIcon', '../../assets/icons/title-pink.png')" />
+      </div>
+    </div>
+
+
+    <div class="create-content-item">
+      <img src="../../assets/icons/map-create.png" id="mapCreateIcon">
+      <div class="form__group">
+        <input type="text" ngx-google-places-autocomplete class="form__input" id="map" placeholder="Location"
+          (onAddressChange)="AddressChange($event)" formControlName="location"
+          (input)="inputChanged($event.target, 'mapCreateIcon', '../../assets/icons/map-create-pink.png')" />
+      </div>
+    </div>
+
+
+
+    <div class="create-content-item field editor-tag" (click)="focusTagInput()">
+      <img src="../../assets/icons/tag.png" id="tagCreateIcon">
+      <div style="margin-left:33px;">
+        <span class="tag-item" *ngFor="let tag of tags">
+          {{tag}}
+          <span class="remove-tag" (click)="removeTag(tag)">×</span>
+        </span>
+        <input type="text" class="input-tag form__field" id="searchTags" placeholder="Type tags" #tagInput
+          formControlName="tag"
+          (input)="inputChanged($event, 'tagCreateIcon', '../../assets/icons/tag-pink.png', true)" />
+      </div>
+    </div>
+
+
+    <div class="create-content-item">
+      <img src="../../assets/icons/picture.png" id="pictureIcon">
+      <button type="button" class="upload-btn" (click)="filePicker.click()">Pick Main Picture</button>
+      <!-- $event allowes you to access the events on (...) -->
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('photo')?.valid">
+      <img [src]="imagePreview" [alt]="form.value.title">
+      <img src="../../assets/icons/close-pink.png" class="delete-file" (click)="deleteFile(imagePreview)">
+    </div>
+
+
+
+    <div class="create-content-item">
+      <img src="../../assets/icons/photos.png" id="photosCreateIcon">
+      <button type="button" class="upload-btn" (click)="photosPicker.click()">Pick Photos</button>
+      <!-- $event allowes you to access the events on (...) -->
+      <input type="file" #photosPicker (change)="onPhotosPicked($event)" multiple="">
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+      <div *ngFor="let url of photosPreview" style="position: relative;">
+        <img [src]="url" class="image-preview2">
+        <img src="../../assets/icons/close-pink.png" class="delete-file" (click)="deletePhoto(url)">
+      </div>
+    </div>
+
+
+
+
+
+    <div class="create-content-item">
+      <img src="../../assets/icons/videos.png" id="videosCreateIcon">
+      <button type="button" class="upload-btn" (click)="videosPicker.click()">Pick Videos</button>
+      <!-- $event allowes you to access the events on (...) -->
+      <input type="file" #videosPicker (change)="onVideosPicked($event)" multiple="">
+    </div>
+    <div *ngIf="videosPreview.length > 0" class="videos-preview">
+      Your videos are being upload. You will get a notification when the upload is finished.
+      <div *ngFor="let videoFile of videosFiles">
+        {{videoFile.name}}
+        <br>
+      </div>
+    </div>
+
+    <div class="create-content-item">
+      <img src="../../assets/icons/music.png" id="musicCreateIcon">
+      <button type="button" class="upload-btn" (click)="mp3sPicker.click()">Pick Mp3s</button>
+      <!-- $event allowes you to access the events on (...) -->
+      <input type="file" #mp3sPicker (change)="onMp3sPicked($event)" multiple="">
+    </div>
+    <div *ngIf="mp3sPreview.length > 0" class="videos-preview">
+      Your Mp3s are being upload. You will get a notification when the upload is finished.
+      <div *ngFor="let mp3File of mp3sFiles">
+        {{mp3File.name}}
+        <br>
+      </div>
+    </div>
+
+
+    <!-- <div class="create-content-item">
+      <img src="../../assets/icons/calendar.png">
+      <div class="form__group">
+        <input type="text" class="form__input" id="year" placeholder="Year Created"  />
+      </div>
+    </div> -->
+
+    <!-- <button class="save-btn" type="submit">Save Post</button> -->
+
+
+  </div>
+
+</form>

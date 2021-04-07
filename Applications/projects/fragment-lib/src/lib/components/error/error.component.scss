@@ -1,0 +1,17 @@
+.msg {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--my-black);
+}
+
+.error-modal{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-btn{
+    width:120px;
+    border-radius: 22px;
+}

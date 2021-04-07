@@ -1,0 +1,290 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "fragment": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/fragment",
+      "sourceRoot": "projects/fragment/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/fragment",
+            "index": "projects/fragment/src/index.html",
+            "main": "projects/fragment/src/main.ts",
+            "polyfills": "projects/fragment/src/polyfills.ts",
+            "tsConfig": "projects/fragment/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/fragment/src/favicon.ico",
+              "projects/fragment/src/assets"
+            ],
+            "styles": [
+              "projects/fragment-mobile/src/styles.scss",
+              "projects/fragment-desktop/src/styles.scss"
+
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/fragment/src/environments/environment.ts",
+                  "with": "projects/fragment/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "fragment:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fragment:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fragment:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/fragment/src/test.ts",
+            "polyfills": "projects/fragment/src/polyfills.ts",
+            "tsConfig": "projects/fragment/tsconfig.spec.json",
+            "karmaConfig": "projects/fragment/karma.conf.js",
+            "assets": [
+              "projects/fragment/src/favicon.ico",
+              "projects/fragment/src/assets"
+            ],
+            "styles": [
+              "projects/fragment/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/fragment/tsconfig.app.json",
+              "projects/fragment/tsconfig.spec.json",
+              "projects/fragment/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/fragment/e2e/protractor.conf.js",
+            "devServerTarget": "fragment:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "fragment:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "fragment-mobile": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/fragment-mobile",
+      "sourceRoot": "projects/fragment-mobile/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/fragment-mobile",
+            "index": "projects/fragment-mobile/src/index.html",
+            "main": "projects/fragment-mobile/src/main.ts",
+            "polyfills": "projects/fragment-mobile/src/polyfills.ts",
+            "tsConfig": "projects/fragment-mobile/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/fragment-mobile/src/favicon.ico",
+              "projects/fragment-mobile/src/assets"
+            ],
+            "styles": [
+              "projects/fragment-mobile/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/fragment-lib/src/lib/environments/environment.ts",
+                  "with": "projects/fragment-lib/src/lib/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "fragment-mobile:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fragment-mobile:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fragment-mobile:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/fragment-mobile/src/test.ts",
+            "polyfills": "projects/fragment-mobile/src/polyfills.ts",
+            "tsConfig": "projects/fragment-mobile/tsconfig.spec.json",
+            "karmaConfig": "projects/fragment-mobile/karma.conf.js",
+            "assets": [
+              "projects/fragment-mobile/src/favicon.ico",
+              "projects/fragment-mobile/src/assets"
+            ],
+            "styles": [
+              "projects/fragment-mobile/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/fragment-mobile/tsconfig.app.json",
+              "projects/fragment-mobile/tsconfig.spec.json",
+              "projects/fragment-mobile/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/fragment-mobile/e2e/protractor.conf.js",
+            "devServerTarget": "fragment-mobile:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "fragment-mobile:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "fragment-lib": {
+      "projectType": "library",
+      "root": "projects/fragment-lib",
+      "sourceRoot": "projects/fragment-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/fragment-lib/tsconfig.lib.json",
+            "project": "projects/fragment-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/fragment-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/fragment-lib/src/test.ts",
+            "tsConfig": "projects/fragment-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/fragment-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/fragment-lib/tsconfig.lib.json",
+              "projects/fragment-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "fragment"
+}

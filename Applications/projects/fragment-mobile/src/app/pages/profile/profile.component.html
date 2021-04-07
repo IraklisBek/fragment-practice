@@ -1,0 +1,32 @@
+<img src="../../../assets/images/profile_bg.png" class="bg-image">
+<div class="profile">
+    <img src="{{user?.photo}}" class="profile-img">
+    <div>
+        <div class="profile-info">
+            <div class="profile-info-text">
+                <span class="bold">13</span>
+                <br>
+                creations
+            </div>
+            <div class="profile-info-text">
+                <span class="bold">145</span>
+                <br>
+                following
+            </div>
+            <div class="profile-info-text">
+                <span class="bold">1234</span>
+                <br>
+                followers
+            </div>
+
+        </div>
+        <div class="profile-info-btns">
+            <div *ngIf="isMe" class="create-btn" routerLink="/create">create</div>
+            <div *ngIf="isMe" class="edit-btn">edit</div>
+            <div *ngIf="!isMe" class="create-btn" (click)="follow()">{{followText}}</div>
+            <div *ngIf="showUnfollow" class="edit-btn" (click)="unfollow()" style="position: absolute; top:30px;" (click)="unfollow()">unfollow</div>
+            <div *ngIf="!isMe" class="edit-btn">message</div>
+        </div>
+    </div>
+</div>
+<lib-post-list></lib-post-list>

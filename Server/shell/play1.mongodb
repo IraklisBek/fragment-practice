@@ -1,0 +1,66 @@
+// Select the database to use.
+use('fragment');
+
+// ADD FIELD TO users 
+
+// const users = db.users.updateMany({}, {$set: {followers: []}}) 
+
+
+//ITERATE users WITH POPULATED posts
+
+// const users = db.users.aggregate([
+//     { $lookup: { from: 'posts', localField: 'support', foreignField: '_id', as: 'support' } }
+// ])
+// users.forEach(function(user){
+//     user.support.forEach(function(support){
+//     });
+// })
+
+
+//ADD value FIELD TO support FIELD OF users
+
+// db.users.update(
+//   {},
+//   [{ $set: {
+//        support: { $map: {
+//         input: "$support",
+//         as: "x",
+//         in: { post: "$$x", value: 0 }
+//        }}
+//   }}],
+//   { multi: true } //if not only first
+// )
+
+
+
+// print("Dsa")
+// const users = db.users.aggregate([
+//     { $lookup: { from: 'posts', localField: 'support', foreignField: '_id', as: 'support' } }
+// ])
+// users.forEach(function(user){
+//     print(user)
+// })
+
+// db.posts.updateMany({}, {$set: {likedBy: []}}) 
+// // db.posts.updateMany({}, {$set: {supportedBy: []}}) 
+// db.posts.find().forEach(function(user){
+//     print(user)
+// })
+
+//NEW ADDITIONS
+// const users = db.users.updateMany({}, {$set: {comments: []}}) 
+// const users = db.posts.updateMany({}, {$set: {comments: []}}) 
+// // db.posts.updateMany({}, {$set: {supportedBy: []}}) 
+// db.posts.update( THIS HAS A BUG
+//   {},
+//   [{ $set: {
+//        comments: { $map: {
+//         input: "$comments",
+//         as: "x",
+//         in: { user: "$$x", created_at: new Date(), updated_at: new Date() }
+//        }}
+//   }}],
+//   { multi: true } //if not only first
+// )
+// const users = db.users.updateMany({}, {$set: {notifications: []}}) 
+

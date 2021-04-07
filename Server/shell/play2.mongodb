@@ -1,0 +1,11 @@
+// Select the database to use.
+use('fragment');
+// db.users.updateMany({}, {$set: {followers: []}}) 
+// print("dasds")
+// const users = db.users.aggregate([
+//     { $lookup: { from: 'posts', localField: 'support', foreignField: '_id', as: 'post' } }
+// ])
+// print(users)
+db.users.find().forEach(function(user){
+    print(user)
+})

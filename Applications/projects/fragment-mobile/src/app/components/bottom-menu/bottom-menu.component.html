@@ -1,0 +1,33 @@
+<div class="bottom-stick bottom-menu" id="bottomMenu">
+    <div *ngFor="let menuItem of menuItems" class="bottom-menu-item" (click)="goto(menuItem.name)">
+        <img src="../../../assets/icons/{{route!=menuItem.link ? menuItem.icon : menuItem.iconActive}}"
+            alt="{{menuItem.name}}" style="width:22px;" id="bottom_menu_img_{{menuItem.name}}" />
+        <div *ngIf="menuItem.name=='notification'" class="reminder"></div>
+
+        <div *ngIf="menuItem.name=='notification'" class="notification-panel" id="notificationPanel">
+            <div class="notification-panel-item" routerLink="/notifications">
+                <img src="../../../assets/icons/notification.png" style="width: 19px">
+                <span style="margin-left:10px;">
+                    13 notifications
+                </span>
+            </div>
+            <div class="notification-panel-item">
+                <img src="../../../assets/icons/inbox.png" style="width: 19px">
+                <span style="margin-left:10px;">
+                    24 messages
+                </span>
+            </div>
+            <div class="notification-panel-item">
+                <img src="../../../assets/icons/followers.png" style="width: 19px">
+                <span style="margin-left:10px;">
+                    3 new followers
+                </span>
+            </div>
+            
+            <div class="triangle-left">
+                <div class="inner-triangle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

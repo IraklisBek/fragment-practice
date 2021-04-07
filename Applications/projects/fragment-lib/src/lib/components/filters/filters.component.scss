@@ -1,0 +1,94 @@
+.filter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: var(--main-color);
+    box-shadow: var(--box-shadow-usual);
+    border-radius: 22px;
+    width: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
+    bottom: 80px;
+    padding: 10px 24px;
+}
+
+.filter-content {
+    align-self: center;
+}
+
+.filters {
+    width: 100%;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    background-color: white;
+    position: fixed;
+    bottom: 0px; //cause of height of apply btn
+    max-height: 0;
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    box-shadow: var(--box-shadow-usual);
+}
+
+.filters-header-kind-section-btn,
+.filters-header-filter-section-btn {
+    padding: 15px 0;
+    font-weight: bold;
+    width: 50%;
+}
+
+.filters-header-filter-section-btn {
+    background-color: var(--my-grey);
+    border-top-right-radius: 22px;
+}
+
+.filters-header-kind-section-btn {
+    border-top-left-radius: 22px;
+    color: var(--main-color);
+}
+
+.filters-options {
+    padding: 20px 15px;
+}
+
+.checkbox-container,
+.radio-container {
+    margin-top: 25px;
+}
+
+#filterContent {
+    display: none;
+}
+
+.apply-btn {
+    background-color: var(--main-color);
+    color: white;
+    filter: var(--drop-shadow-filters);
+    text-align: center;
+    padding: 15px 0;
+    // position: absolute;
+    // bottom: -50px;
+    width: 100%;
+}
+
+
+.close {
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow-usual);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    top: -20px;
+}
+
+.bg-light-dark{
+    max-height: 0;
+    opacity: 0;
+}

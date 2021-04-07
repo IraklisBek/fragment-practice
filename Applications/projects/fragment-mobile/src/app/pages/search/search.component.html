@@ -1,0 +1,25 @@
+<form [formGroup]="form" (submit)="explore()">
+
+    <div class="form__group field" style="margin-top:74px;">
+        <!-- <input type="input" class="form__field" placeholder="Type Location" name="searchLocation" id='searchLocation' required /> -->
+        <input type="text" formControlName="location" ngx-google-places-autocomplete class="form__field" id="searchLocation" placeholder="Location"
+            required="" (onAddressChange)="AddressChange($event)" />
+        <label for="name" class="form__label">Location</label>
+    </div>
+
+    <div class="editor-tag form__group field" (click)="focusTagInput()">
+        <div style="margin-top: 44px; padding-left: 20px;">
+            <span class="tag-item" *ngFor="let tag of tags">
+                {{tag}}
+                <span class="remove-tag" (click)="removeTag(tag)">×</span>
+            </span>
+        </div>
+
+        <input type="text" class="input-tag form__field" id="searchTags" placeholder="Type tags" required="" #tagInput
+            (input)="inpute($event)" formControlName="tag" />
+        <label for="name" class="form__label">Type tags</label>
+    </div>
+    <img src="../../../assets/images/search-story.png" style="width:60%; margin-left:20%;">
+
+    <button type="submit" class="pink-btn search-btn">explore</button>
+</form>

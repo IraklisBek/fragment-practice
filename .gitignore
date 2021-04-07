@@ -1,0 +1,9 @@
+/.vscode
+/Server/images
+/Server/music
+/Server/videos
+/Server/media
+/Server/node_modules/**/*
+.env
+/Applications/ios
+/Applications/android

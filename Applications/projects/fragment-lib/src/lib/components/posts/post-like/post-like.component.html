@@ -1,0 +1,122 @@
+<div *ngIf="post!=undefined" class="general">
+    <div *ngIf="post?.likedBy?.length" class="post-counts">
+        <!-- <img *ngFor="let postLike of postLikes" [src]="postLike.photo" class="post-likes-img"> -->
+        <img src="../../assets/icons/liketwo.png" class="post-likes-img">
+        <span class="text">
+            {{post?.likedBy?.length}}
+        </span>
+    </div>
+    <div *ngIf="post?.comments?.length" class="post-counts">
+        <img src="../../assets/icons/circle-pink.png" style="width:7px;">
+        <span class="text">
+            {{post?.comments?.length}} comments
+        </span>
+    </div>
+    <div *ngIf="post?.supportedBy?.length" class="post-counts">
+        <img src="../../assets/icons/circle-pink.png" style="width:7px;">
+        <span class="text">
+            {{post?.supportedBy?.length}} supports
+        </span>
+    </div>
+</div>
+<div class="like">
+    <div class="like-item" (click)="onLike()">
+        <img *ngIf="likedByUser()" src="../../assets/icons/like-pink.png">
+        <img *ngIf="!likedByUser()" src="../../assets/icons/like.png">
+        <div [ngStyle]="{'color':likedByUser() ? 'var(--main-color)' : 'var(--my-black)' }">Like</div>
+    </div>
+    <div class="like-item" (click)="openComments()">
+        <img *ngIf="commentedByUser()" src="../../assets/icons/chat-pink.png">
+        <img *ngIf="!commentedByUser()" src="../../assets/icons/chat.png">
+        <div [ngStyle]="{'color':commentedByUser() ? 'var(--main-color)' : 'var(--my-black)' }">Comment
+        </div>
+    </div>
+    <div class="like-item" (click)="onSupport()">
+        <img *ngIf="supportedByUser()" src="../../assets/icons/money-pink.png">
+        <img *ngIf="!supportedByUser()" src="../../assets/icons/money.png">
+        <div [ngStyle]="{'color':supportedByUser() ? 'var(--main-color)' : 'var(--my-black)' }">Support
+        </div>
+    </div>
+    <div class="like-item">
+        <img src="../../assets/icons/msg.png">
+        <div>Message</div>
+    </div>
+</div>
+<div class="comments" #comments>
+    <div *ngFor="let comment of post?.comments | slice:0:end; let i=index" class="content">
+        <img [src]="comment.user.photo" class="photo">
+        <div class="text">
+            <strong>{{comment.user.username}}</strong>
+            <br>
+            {{comment.created_at}}
+            <br>
+            <br>
+            {{comment.comment}}
+        </div>
+        <div style="width:100%"></div>
+        <div class="like-reply">
+            <span>Like</span>
+            <!-- <img src="../../assets/icons/circle-pink.png" style="width:7px; margin-left:10px;"> -->
+            <span style="margin-left:15px">|</span>
+            <span style="margin-left:15px">Reply</span>
+        </div>
+    </div>
+    <div *ngIf="post?.comments?.length!>2 && showLoadBtn" (click)="loadMoreComments()" class="load-more-comments">
+        load more
+    </div>
+    <div class="sb-example-2">
+        <div id="cover">
+            <form [formGroup]="form" style="position: relative;" (submit)="addComment()">
+                <input type="text" placeholder="Type comment" required="" formControlName="commentInput" #commentInput>
+                <button class="user-img">
+                    <img [src]="user?.photo" class="search-img">
+                </button>
+                <div class="under-comment-input">
+                    <button type="submit">
+                        POST
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<div class="bg-light-dark" #darkBGArea>
+
+</div>
+<div class="centered-modal support-modal" [@slideInOut]="animationState" #supportModal>
+
+    <img src="../../assets/icons/close-pink.png"
+        style="position: absolute; width:30px; position: absolute; right: -15px; top:-15px;" (click)="closePay()">
+    <form [formGroup]="formSupport" (submit)="pay()">
+        <div class="support-title">
+            <img [src]="post?.photo" class="support-post-photo">
+            <div class="text">
+                <strong>
+                    {{post?.title}}
+                </strong>
+                <br>
+                by {{post?.user?.username}}
+            </div>
+        </div>
+        <hr>
+        <div class="name-price">Name tour price:</div>
+        <br>
+        <div class="price-input">
+            <div class="money-sign">
+                E
+            </div>
+            <input type="text" placeholder="" required="" formControlName="payInput" id="payInput">
+            <div class="initial-price">(4e or more)</div>
+        </div>
+        <div class="name-price">Send message to user:</div>
+        <br>
+        <div class="send-msg-input">
+            <textarea placeholder="" required="" formControlName="supportMessageInput"></textarea>
+        </div>
+        <div class="btns-100-right support-btns">
+            <div class="empty-btn" (click)="cancelPay()">Cancel</div>
+            <button class="pink-btn support-btn" type="submit">Checkout</button>
+        </div>
+    </form>
+</div>

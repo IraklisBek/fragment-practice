@@ -1,0 +1,8 @@
+<span *ngIf="userIsAuthenticated && route!='/post' && !route.includes('post/')">
+  <app-header></app-header>
+  <app-bottom-menu></app-bottom-menu>
+</span>
+<!-- <main [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']"> -->
+<main #mainContent>
+  <router-outlet #o="outlet"></router-outlet>
+</main>

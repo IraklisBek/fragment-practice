@@ -1,0 +1,62 @@
+<div class="bg-light-dark" id="darkBGFilters" #darkBGArea></div>
+<div class="filter-btn" (click)="openFilters()" id="filterBtn">
+    <img src="../../../assets/icons/filter.png" style="width:20px"> <span style="margin-left:10px">filters</span>
+</div>
+<div class="filters" id="filtersUI" [@slideInOut]="animationState" #filtersArea>
+    <img src="../../../assets/icons/close.png" class="close" (click)="cancelFilters()">
+    <div class="filters-header">
+        <div class="filters-header-kind-section-btn" (click)="switchOption('kind')" id="kindSectionBtn">
+            Kind
+        </div>
+        <div class="filters-header-filter-section-btn" (click)="switchOption('filter')" id="filterSectionBtn">
+            Filter
+        </div>
+    </div>
+    <div class="filters-options">
+        <div id="kindContent">
+            <span style="color: var(--main-color); font-weight: bold;">
+                Choose Kind
+            </span>
+            <label class="checkbox-container">Projects
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">Events
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">Jobs
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">Art
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div id="filterContent">
+            <span style="color: var(--main-color); font-weight: bold;">
+                Choose Filter
+            </span>
+            <label class="radio-container">Most Popular
+                <input type="radio" name="radio">
+                <span class="radio-checkmark"></span>
+            </label>
+            <label class="radio-container">Most Recent
+                <input type="radio" name="radio">
+                <span class="radio-checkmark"></span>
+            </label>
+            <label class="radio-container">Recommended
+                <input type="radio" name="radio">
+                <span class="radio-checkmark"></span>
+            </label>
+            <label class="radio-container">Top Rated
+                <input type="radio" name="radio">
+                <span class="radio-checkmark"></span>
+            </label>
+        </div>
+    </div>
+    <div class="apply-btn" id="applyBtn" (click)="applyFilters()">
+        Apply
+    </div>
+</div>

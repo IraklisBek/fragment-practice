@@ -1,0 +1,84 @@
+<div [@slideInOut]="animationState" id="postView">
+    <div class="header" id="postViewHeader">
+        <div (click)="goToProfile(post?.user?._id!)"
+            style="outline: 0;">
+            <img src="{{post?.user?.photo}}" class="header-img">
+        </div>
+        <div class="header-title">
+            {{post?.kind}} by {{post?.user?.username}}
+            <br>
+            <span (click)="viewPostsAtLocation(post?.location!)">{{post?.location}}</span>
+        </div>
+        <div (click)="closeProject()" style="outline: 0;">
+            <img src="../../assets/icons/close-pink.png" class="header-img" style="width:24px; height:24px;">
+        </div>
+    </div>
+    <div class="content" style="border-bottom: 1px solid var(--my-grey)">
+        <div class="content-info">
+            <div class="content-title">
+                {{post?.title}}
+            </div>
+            <div *ngIf="post?.description" class="content-description">
+                <div *ngIf="!showAllDescr">
+                    {{post?.description | slice:0:80}}
+                    ... <span style="color:var(--main-color); font-weight: bold;" (click)="readMore()">read more</span>
+                </div>
+                <div *ngIf="showAllDescr">
+                    {{post?.description}}
+                    <br>
+                    <div *ngFor="let tag of post?.tags">
+                        <span style="color:var(--main-color)" (click)=viewPostsWithTagName(tag)>#{{tag.name}}</span>
+
+                    </div>
+                    <span style="color:var(--main-color); font-weight: bold;" (click)="readMore()">show less</span>
+                </div>
+
+                <!-- ... <span style="color:var(--main-color); font-weight: bold;">read more</span> -->
+            </div>
+        </div>
+        <img src="{{post?.photo}}" style="width:100%;">
+        <lib-post-like [post]=post></lib-post-like>
+    </div>
+    <div class="content m-t-0">
+        <div class="content-info">
+            <div *ngIf="post?.photos?.length!>0" class="images-section">
+                <div class="mb-fs16-bold" style="width:100%;">Images</div>
+                <img *ngFor="let photo of post?.photos; let i = index" src="{{photo}}" (click)="openGallery(i)"
+                    [style.height.px]="imgHeight">
+            </div>
+            <div *ngIf="post?.videos?.length!>0" class="video-section">
+                <div class="mb-fs16-bold">Videos</div>
+                <!-- <iframe style="margin-top:30px;" width="100%" src="https://www.youtube.com/embed/ULNyu2ZRAxE"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe> -->
+
+                <video *ngFor="let video of post?.videos;" width="100%" controls>
+                    <source src="{{video}}" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+            </div>
+            <div *ngIf="post?.music?.length!>0" class="video-section">
+                <div class="mb-fs16-bold">Music</div>
+                <div *ngFor="let mp3 of post?.music;">
+                    {{getTitleFromMediaElement(mp3)}}
+                    <audio controls>
+                        <source src="{{mp3}}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+            </div>
+        </div>
+        <div class="dummy-height">.</div>
+    </div>
+</div>
+
+<div class="gallery" id="gallery">
+    <img src="../../../assets/images/graffiti_main_1.png" class="gallery-img" id="galleryImg">
+    <img src="../../assets/icons/close-pink.png" class="close" (click)="closeGallery()">
+    <div class="gallery-btns">
+        <img src="../../assets/icons/previous.png" style="width:30px; margin-left:20px" (click)="previousPhoto()">
+        <img src="../../assets/icons/next.png" style="width:30px; margin-right:20px;" (click)="nextPhoto()">
+    </div>
+</div>

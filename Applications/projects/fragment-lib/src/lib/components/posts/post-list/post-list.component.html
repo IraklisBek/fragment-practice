@@ -1,0 +1,32 @@
+<div id="postList">
+    <div class="where-what">
+        <div *ngIf="postLocation" class="loc">
+            {{postLocation}}
+        </div>
+        <div *ngIf="postTags" class="tag">
+            <span *ngFor="let tag of postTagsJson">#{{tag.name}} </span>
+        </div>
+    </div>
+
+    <div *ngFor="let post of posts" class="post">
+        <div class="post-header">
+            <div [routerLink]="['/profile']" [queryParams]="{userId: post?.user?._id}">
+                <img src="{{post?.user?.photo}}" class="post-header-profile">
+            </div>
+            <div class="post-header-info">
+                <span style="font-weight: bold;">{{post?.user?.username}}</span> posted a <span
+                    style="font-weight: bold; color: var(--main-color)">{{post?.kind}}</span>
+                <br>
+                <span style="color: var(--my-dark-grey)">{{post.location}}</span>
+            </div>
+        </div>
+        <div class="post-title">
+            {{post.title}}
+        </div>
+        <div (click)="openProject(post)">
+            <img src="{{post.photo}}" style="width:100%; height:270px; object-fit: cover;">
+        </div>
+        <lib-post-like [post]=post></lib-post-like>
+    </div>
+</div>
+<lib-post-view></lib-post-view>
