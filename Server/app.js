@@ -13,15 +13,7 @@ const notificationRoutes = require("./routes/notifications")
 
 const app = express();
 
-// mongoose.connect("mongodb+srv://bekiaris:NA5QOwiZh3eZQAyf@cluster0.2wlci.mongodb.net/fragment?retryWrites=true&w=majority"
-//     , {
-//         useUnifiedTopology: true,
-//         useNewUrlParser: true,
-//         useFindAndModify: false
-//     })
-//     .then(() => {
-//         console.log("Connected to Database");
-//     })
+
 mongoose.connect("mongodb://localhost:27017/fragment", { useFindAndModify: false })
     .then(() => {
         console.log("Connected to Database");
